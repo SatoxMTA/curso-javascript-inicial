@@ -1,3 +1,3 @@
 # curso-javascript-inicial
 
-## Autor: Eduardo Denis
+## Autor: Eduardo Ignacio Denis
