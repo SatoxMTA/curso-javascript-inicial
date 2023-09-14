@@ -60,4 +60,31 @@ console.log(splited)
 console.log("propiedad length:", splited.length)
 console.log("metodo join", splited.join(" "))
 
+let autosArray = ["Etios", "Yaris", "Corolla"]
+console.log("autosArray:", autosArray)
+let ultimoAuto = autosArray.pop()
+console.log("metodo pop:", ultimoAuto)
+console.log("autosArray:", autosArray)
+console.log("metodo push:", autosArray.push("Corolla Hibrido"))
+console.log("autosArray:", autosArray)
+autosArray.push(ultimoAuto)
+console.log("autosArray:", autosArray)
+let primerAuto = autosArray.shift()
+console.log("metodo shift:", primerAuto)
+console.log("autosArray:", autosArray)
+autosArray.unshift(primerAuto)
+console.log("autosArray:", autosArray)
+autosArray.reverse()
+console.log("autosArray:", autosArray)
 
+// Propiedades y Metodos en los Numbers
+let numero = 25.213451
+numero = numero.toFixed(2)
+console.log("metodo toFixed:", numero)
+numero = 0/0
+console.log("NaN:", numero)
+console.log("isNaN:", isNaN(numero))
+let numero1 = "15"
+let numero2 = parseInt("15")
+console.log(numero1 + 1)
+console.log(numero2 + 1)
