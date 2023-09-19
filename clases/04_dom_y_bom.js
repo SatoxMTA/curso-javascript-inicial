@@ -52,5 +52,32 @@ card.appendChild(parrafoNuevo)
 card.removeChild(parrafoNuevo)
 // card.remove()
 
+// Ejemplo JSON - Conversion
+let autoJson = '{"nombre": "Auto Rojo", "imagen": "./img/auto.jpg"}';
+let auto = JSON.parse(autoJson);
+
+console.log(autoJson)
+console.log(auto)
+console.log(JSON.stringify(auto))
+
+let imagen = document.querySelector('img')
+imagen.alt = auto.nombre
+imagen.src = auto.imagen
+
+// Ejemplo insertAdjacentHTML
+let container = document.querySelector('.container')
+container.insertAdjacentHTML("afterbegin", "<span class='text-danger'> Hola Mundo </span>")
 
 
+// BOM - Window
+console.log(window.screenY, screenX)
+let google = window.open("http://google.com")
+google.resizeTo(800, 600)
+google.resizeBy(100, 150)
+google.close()
+
+// Location
+console.log(location.href)
+// location.assign('https://wikipedia.org')
+// location.replace("http://google.com")
+// location.reload(true)
