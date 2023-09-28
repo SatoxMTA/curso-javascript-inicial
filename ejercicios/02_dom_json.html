@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .verde {
+            color: green;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="promedio"></div>
+    <div class="container"></div>
+    <button id="calcular"> Calcular </button>
+    <button id="reset"> Reset </button>
+
+    <script>
+        /*
+            Crea una página web que muestre una lista de estudiantes y sus promedios. La página debe realizar las siguientes tareas:
+
+            1. Mostrar la lista de 10 estudiantes.
+            2. Resaltar en color verde a los estudiantes que tengan un promedio de 10.
+            3. Calcular el promedio general de la clase y mostrarlo en algun lugar de la pagina.
+            4. Mostrar el contenido cuando presinado el boton calcular
+        */
+
+        const claseJSON = '{"estudiantes":[{"nombre":"Juan","promedio":7},{"nombre":"Pedro","promedio":9},{"nombre":"Maria","promedio":8},{"nombre":"Carlos","promedio":10},{"nombre":"Ana","promedio":7},{"nombre":"Pablo","promedio":10},{"nombre":"Matias","promedio":6},{"nombre":"Ezequiel","promedio":8},{"nombre":"Florencia","promedio":9},{"nombre":"Roxana","promedio":7}]}'
+        const clase = JSON.parse(claseJSON)
+        let container = document.querySelector('.container')
+        let promedioDiv = document.querySelector('#promedio')
+        let botonCalcular = document.querySelector('#calcular')
+        let botonReset = document.querySelector('#reset')
+
+        botonCalcular.addEventListener('click', (event) => {
+            event.target.disabled = true
+
+            let acumulador = 0
+            let contador = 0
+            let promedioGeneral
+            let estudianteHTMLString
+
+            clase.estudiantes.forEach(estudiante => {
+
+                // Verifico si el promedio es 10
+                if (estudiante.promedio == 10) {
+                    estudianteHTMLString = `<p class="verde"> ${estudiante.nombre}, y su promedio es ${estudiante.promedio} </p>`
+                } else {
+                    estudianteHTMLString = `<p> ${estudiante.nombre}, y su promedio es ${estudiante.promedio} </p>`
+                }
+
+                container.insertAdjacentHTML("afterbegin", estudianteHTMLString)
+
+                // promedio general
+                contador = contador + 1
+                acumulador = acumulador + estudiante.promedio // acumulador += estudiante.promedio
+            });
+
+            // Mostrar promedio general
+            promedioGeneral = acumulador / contador
+            promedioDiv.innerHTML = `<p> <b>El promedio general es: ${promedioGeneral}<b/> </p>`
+
+        })
+
+        botonReset.addEventListener('click', (event) => {
+            // Inicializar el html vacio
+            container.innerHTML = ""
+            promedioDiv.innerHTML = ""
+            botonCalcular.disabled = false
+        })
+    </script>
+</body>
+
+</html>
