@@ -41,12 +41,16 @@
 <body>
 
     <button id="mostrarModal">Mostrar Modal</button>
+    <div id="mostrarResultado"></div>
 
     <div id="miModal" class="modal">
         <div class="modal-contenido">
             <span class="cerrar-modal" id="cerrarModal">&times;</span>
             <h2>Modal Titulo</h2>
+            <p id="mensaje"></p>
             <p>Modal simple.</p>
+            <input type="text" name="inputModal" id="inputModal">
+            <button id="confirmacionModal"> Confirmar </button>
         </div>
     </div>
 
@@ -73,6 +77,30 @@
                 modal.style.display = 'none';
             }
         });
+
+        // const confirmarModalBtn = document.getElementById('confirmacionModal')
+        const confirmarModalBtn = document.querySelector('#confirmacionModal')
+        const inputModal = document.querySelector('#inputModal')
+        const mensaje = document.querySelector('#mensaje')
+        const mostrarResultado = document.querySelector('#mostrarResultado')
+
+        confirmarModalBtn.addEventListener('click', () => {
+            mostrarResultado.innerText = '' 
+            mensaje.innerText = ''
+            inputValue = parseInt(inputModal.value)
+
+            if (inputModal.value == '') {
+                mensaje.innerText = 'El input no puede estar vacio, ingrese un valor numerico'
+                mensaje.style.color = 'blue'
+            } else if (isNaN(inputValue)) {
+                mensaje.innerText = 'No es un numero'
+                mensaje.style.color = 'red'
+            } else {
+                modal.style.display = 'none'
+                mostrarResultado.innerText = inputValue + 5
+                mostrarResultado.style.color = 'green'
+            }
+        })
 
     </script>
 
