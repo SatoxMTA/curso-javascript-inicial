@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <button> Click para generar GATITO! </button>
+
+    <div>
+        <img src="">
+    </div>
+    
+    <script>
+        
+        let peticion = new XMLHttpRequest()
+        
+        peticion.onreadystatechange = () => {
+            if (peticion.readyState == 4 && peticion.status == 200) {
+                let result = JSON.parse(peticion.responseText)
+                let gatito = result[0]
+                let urlGatito = gatito.url
+                let imagen = document.querySelector('img')
+                imagen.src = urlGatito
+            }
+        }
+        
+        // Logica del boton
+        let boton = document.querySelector('button')
+        boton.addEventListener('click', (event) => {
+            // Consultar la API
+            peticion.open('GET', 'https://api.thecatapi.com/v1/images/search')
+            peticion.send()
+        })
+
+
+
+    </script>
+</body>
+</html>

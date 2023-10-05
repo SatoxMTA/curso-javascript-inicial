@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="">
+        <p></p>
+        <label for="nombre"></label>
+        <input name="nombre" type="text">
+        <input type="button" onclick="guardarLocal()" value="localStorage"> 
+        <input type="button" onclick="guardarSession()" value="SessionStorage"> 
+    </form>
+
+    <script src="../jquery-3.7.1.min.js"></script>
+
+    <script>
+        document.querySelector('p').innerHTML = localStorage.getItem('nombre')
+        document.querySelector('p').style.color = 'red';
+
+        document.querySelector('p').innerHTML = sessionStorage.getItem('nombre')
+        document.querySelector('p').style.color = 'blue';
+
+
+        const guardarLocal = () => {
+            let nombre = document.querySelector('input').value
+            localStorage.setItem('nombre', nombre)
+        }
+
+        const guardarSession = () => {
+            let nombre = document.querySelector('input').value
+            sessionStorage.setItem('nombre', nombre)
+        }
+
+
+        // Local Storage
+        localStorage.setItem('apellido', 'Denis')
+        localStorage.setItem('apellido', 'Gomez')
+
+        let test = {
+            propiedad1: "test1",
+            propiedad2: "test2"
+        }
+
+        localStorage.setItem('test', JSON.stringify(test))
+        console.log(JSON.parse(localStorage.getItem('test')))
+
+        // localStorage.removeItem('test')
+        // localStorage.clear()
+
+        // Session Storage
+        sessionStorage.setItem('apellido', 'Denis')
+        console.log( sessionStorage.getItem('apellido'))
+
+        sessionStorage.setItem('test', JSON.stringify(test))
+        console.log(JSON.parse(sessionStorage.getItem('test')))
+
+        // sessionStorage.removeItem('test')
+        // sessionStorage.clear()
+
+    </script>
+</body>
+</html>
