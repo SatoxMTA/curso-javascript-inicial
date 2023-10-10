@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        span {
+            color: red;
+        }
+
+        .active {
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <div class="container">
+            <p> Hola Mundo 1 </p>
+            <p class="active"> Hola Mundo 2 </p>
+            <p> Hola Mundo 3 </p>
+            <p class="active"> Hola Mundo 4 </p>
+            <p> Hola Mundo 5 </p>
+        </div>
+
+        <div>
+            <span> Buenos dias </span>
+        </div>
+
+        <div>
+            <a href="#">top</a>
+        </div>
+
+        <ul>
+            <li> Item 1 </li>
+            <li> Item 2 </li>
+            <li> Item 3 </li>
+        </ul>
+
+        <a href="https://portal.edu-apps.com.ar/media/api/product/images/yaris.png" target="_blank">
+            <img src="https://portal.edu-apps.com.ar/media/api/product/images/yaris.png" alt="">
+        </a>
+
+        <input type="text" name="nombre" value="Eduardo">
+        <input type="text" name="apellido" value="Denis">
+
+
+    </main>
+
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script>
+        let seleccion1 = $('p.active')
+        console.log('seleccion1', seleccion1)
+
+        if (seleccion1.length > 1) {
+            console.log(`Hay mas de un parrafo activo: el numero es ${seleccion1.length}`)
+        }
+
+        // has
+        let seleccion2 = $('div').has('p')
+        console.log('seleccion2', seleccion2)
+
+        // not
+        let seleccion3 = $('p').not('.active')
+        console.log('seleccion3', seleccion3)
+
+        // ultimo elemento
+        $('ul li').last();
+
+
+        // get y set html
+        console.log($('span').html())
+        $('span').html('<p>Chau</p>')
+        console.log($('span').html())
+
+
+        // css
+        console.log($('span').css('color'))
+        $('span').css('color', 'blue')
+        console.log($('span').css('color'))
+
+        // class
+        $('p').toggleClass('active')
+        $('p').addClass('active')
+        $('p').removeClass('active')
+
+        // width and height
+        console.log($('div.container').width())
+        console.log($('div.container').height())
+
+        $('div.container').height('50vh')
+
+        // attr y prop
+        console.log($('img').attr('src'))
+        $('img').attr('src', 'https://portal.edu-apps.com.ar/media/api/product/images/onix-turbo-hb.webp')
+
+        // val
+        console.log($('input[name=nombre]').val())
+        $('input[name=nombre]').val('Eduardo Ignacio')
+        console.log($('input[name=nombre]').val())
+
+        // parent y children
+        $('li').parent()
+        $('ul').children()
+
+        // append y appendTo / prepend y prependTo
+        $('main').append($('<div></div>'));
+        $('<div></div>').appendTo($('main'));
+
+        $('main').prepend($('<div></div>'));
+        $('<div></div>').prependTo($('main'));
+
+        // hide y show
+        $('img').hide()
+        $('img').show()
+
+        // each
+        $('ul li').each(
+            function (indice, elemento) {
+                console.log(indice + ' tiene ' + $(elemento).html());
+            }
+        );
+
+        // map
+        valoresMapeados = $('input').map(
+            function (indice, elemento) {
+                return $(elemento).val();
+            }
+        );
+
+        // eventos
+        $('a').click((event) => {
+            console.log('Hola mundo 1!')
+        })
+
+        $('a').on('click', (event) => {
+            console.log('Hola mundo 2!')
+        })
+
+        // ajax
+        $.get("https://portal.edu-apps.com.ar/api/products/?format=json", function (data) {
+            console.log(data)
+        });
+
+
+    </script>
+</body>
+
+</html>
