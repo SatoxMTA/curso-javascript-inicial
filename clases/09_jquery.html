@@ -147,6 +147,16 @@
             console.log(data)
         });
 
+        $.ajax({
+            url: "https://portal.edu-apps.com.ar123123/api/products/?format=json",
+            type: 'GET',
+            success: (data) => {
+                console.log("Exito", data)
+            },
+            error: (error) => {
+                console.log("error", error)
+            },
+        });
 
     </script>
 </body>

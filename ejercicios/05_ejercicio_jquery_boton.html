@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <img src="" alt="Foto del Auto por JQuery">
+    <img src="" alt="Foto del Auto por JQuery">
+    <button id="cargar-foto">Cargar Foto</button>
+    
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script>
+
+        $('#cargar-foto').on('click', (event) => {
+            $('img').attr('src', '../img/auto.jpg')
+        })
+
+        $('img').on('click', function(event) {
+            console.log($(this).attr('src'))
+            console.log(event.target.src)
+        })
+
+    </script>
+</body>
+</html>

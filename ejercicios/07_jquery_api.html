@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .foto-auto {
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+    </main>
+
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script>
+        $.get("https://portal.edu-apps.com.ar/api/products/?format=json", function (data) {
+            data.forEach(product => {
+                let imagen = $(`<img class="foto-auto" src="${product.image_field}" alt="Foto Auto">`)
+                $('main').append(imagen)
+
+                imagen.on('click', function () {
+                    console.log($(this).attr('src'))
+                })
+            });
+        });
+    </script>
+</body>
+
+</html>

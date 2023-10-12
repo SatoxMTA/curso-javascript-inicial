@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* #seccion-2,
+        #seccion-3 {
+            display: none;
+        } */
+
+        .active {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <button id="1" class="active"> Seccion 1 </button>
+                </li>
+                <li>
+                    <button id="2"> Seccion 2 </button>
+                </li>
+                <li>
+                    <button id="3"> Seccion 3 </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    </main>
+
+    <!-- <section id="seccion-1">
+        Seccion 1
+    </section>
+    <section id="seccion-2">
+        Seccion 2
+    </section>
+    <section id="seccion-3">
+        Seccion 3
+    </section> -->
+
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script>
+
+        $('nav button').on('click', function (event) {
+            let url = `http://127.0.0.1:5500/ejercicios/componentes/seccion-${event.target.id}.html`
+            $("main").load(url);
+        })
+
+
+        // $('nav button').on('click', function(event) {
+        //     id = $(this).attr('id')
+
+        //     $('nav button').removeClass('active') // remuevo la clase active de todos los botones
+        //     $(this).addClass('active') // le agrego la clase active al boton seleccionado
+        //     $('section').hide()
+        //     $(`#seccion-${id}`).show()
+        //     // $(`#seccion-${event.target.id}`).show()
+        // })
+
+    </script>
+</body>
+
+</html>
